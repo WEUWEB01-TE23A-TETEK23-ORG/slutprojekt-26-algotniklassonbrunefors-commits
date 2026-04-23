@@ -1,8 +1,40 @@
-body
-.header
-.main
-.sidebar
-.footer
-p
-button
-h1
+body{
+    background-color: #603d00;
+}
+.kontainer{
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 80% 1fr;
+
+    grid-template-areas:
+        "main sidebar";
+
+    grid-gap: 20px;
+}
+.header{
+    background-color: #603d00;
+}
+.main{
+    padding: 20px;
+    background-color: #936312;
+    border-radius: 20px;
+}
+.sidebar{
+    display: grid;
+    grid-template-rows: 15% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: #603d00;
+    border: #000000 3px solid;
+}
+.sidebar h2{
+    margin: auto;
+}
+p{}
+button{
+    padding: 10px;
+    background-color: #a47c37;
+}
+h1{}
+img{
+    border-radius: 10px;
+}

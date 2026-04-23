@@ -12,7 +12,6 @@ function updateUI() {
     document.getElementById("barr").textContent = "Barr: "+barr;
     document.getElementById("myraBtn").textContent = "Köp myra ("+myrapris+" barr)";
     document.getElementById("autoBtn").textContent = "Auto samla ("+autopris+" barr)";
-
 }
 function buy_myra() {
     if (barr >= myrapris){
@@ -30,10 +29,25 @@ function auto_samla() {
         updateUI();
     }
 }
-
+function auto_myra() {
+    if(barr >= 10000){
+        barr -= 10000;
+        
+        updateUI()
+    }
+}
+function auto() {
+    
+}
+function auto() {
+    
+}
+function auto() {
+    
+}
 // auto samla varje sekund
 setInterval(() => {
-    barr += autolvl;
+    barr += autolvl*myror;
     updateUI();
 }, 1000);
 
