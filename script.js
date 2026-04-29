@@ -7,14 +7,14 @@ let matlvl = 0;
 let autopris = 100;
 let myrapris = 10;
 let soldatpris = 10000;
-let drottning = false;
+let drottninglvl = 0;
 
 function updateUI() {
     document.getElementById("myror").textContent = "Arbetarmyror: "+myror+ " Soldatmyror: "+soldatmyra;
     document.getElementById("barr").textContent = "Barr: "+barr;
     document.getElementById("mat").textContent = "Mat: "+mat;
     document.getElementById("matBtn").textContent = "Mat insamling ("+(1000+100*matlvl)+" barr) lvl: "+matlvl;
-    document.getElementById("myraBtn").textContent = "Köp myra ("+myrapris+" barr)";
+    document.getElementById("myraBtn").textContent = "Köp arbetarmyra ("+myrapris+" barr)";
     document.getElementById("autoBtn").textContent = "Barr insamling ("+autopris+" barr) lvl: "+autolvl;
     document.getElementById("soldatBtn").textContent = "Köp soldatmyra ("+soldatpris+" barr)";
 }
@@ -42,10 +42,10 @@ function auto_mat() {
     }
 }
 function auto_myra() {
-    if(barr >= 5000 && drottning == false){
-        barr -= 5000;
-        drottning = true;
-        document.getElementById("drottningBtn").style.backgroundColor = "red";
+    if(barr >= 5000+5000*drottninglvl){
+        barr -= 5000+5000*drottninglvl;
+        drottninglvl += 1;
+        document.getElementById("drottningBtn").textContent = "Uppgradera drottning ("+(5000+5000*drottninglvl)+" barr) lvl: "+drottninglvl;
         updateUI()
     }
 }
@@ -71,9 +71,9 @@ function auto() {
 }
 setInterval(() => {
     barr += autolvl*myror;
-    if (mat >= matlvl && drottning == true){
-        myror += matlvl;
-        mat -= matlvl;
+    if (mat >= drottninglvl){
+        myror += drottninglvl;
+        mat -= drottninglvl;
     }
     mat += matlvl*myror;
     updateUI();
@@ -81,6 +81,10 @@ setInterval(() => {
 
 function clickBarr() {
     barr += 1;
+    document.getElementById("myrstack").style.transform = "scale(1.01)";
+    setTimeout(() => { 
+        document.getElementById("myrstack").style.transform = "scale(1)" ;
+    }, 50);
     updateUI();
 }
 
