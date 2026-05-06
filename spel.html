@@ -16,7 +16,12 @@
     <div class="kontainer">
         <div class="main">
             <img src="./bilder/anthill-section-under-ground-termite-260nw-2171588899.png" onclick="clickBarr()" id="myrstack">
-            <img src="./bilder/static.gif" alt="">
+            <div id="krigBox" style="visibility: hidden;">
+                <img src="./bilder/static.gif" id="krigBild">
+                <p id="krigTxt">Du stöter på en fientlig myrstack! Vad vill du göra?"</p>
+                <button id="krigBtn" onclick="kriga()">Kriga!</button>
+                <button id="retireraBtn" onclick="retirera()">Retirera!</button>
+            </div>
         </div>
         <div class="sidebar">
             <h2>Upgraderingar</h2>
@@ -25,10 +30,6 @@
             <button id="matBtn" onclick="auto_mat()">Mat insamling (1000 barr)</button>
             <button id="drottningBtn" onclick="auto_myra()">Köp drottning (5000 barr)</button>
             <button id="soldatBtn" onclick="soldat_myra()">Köp soldatmyra (10000 barr)</button>
-            <button id="" onclick="auto_samla()"></button>
-            <button id="" onclick="auto_samla()"></button>
-            <button id="" onclick="auto_samla()"></button>
-            <button id="" onclick="auto_samla()"></button>
             <button id="" onclick="auto_samla()"></button>
         </div>
     </div>

@@ -8,6 +8,7 @@ let autopris = 100;
 let myrapris = 10;
 let soldatpris = 10000;
 let drottninglvl = 0;
+let fiende = 1;
 
 function updateUI() {
     document.getElementById("myror").textContent = "Arbetarmyror: "+myror+ " Soldatmyror: "+soldatmyra;
@@ -38,7 +39,7 @@ function auto_mat() {
     if(barr >= 1000+100*matlvl){
         barr -= 1000+100*matlvl;
         matlvl +=1;
-        updateUI()
+        updateUI();
     }
 }
 function auto_myra() {
@@ -46,7 +47,7 @@ function auto_myra() {
         barr -= 5000+5000*drottninglvl;
         drottninglvl += 1;
         document.getElementById("drottningBtn").textContent = "Uppgradera drottning ("+(5000+5000*drottninglvl)+" barr) lvl: "+drottninglvl;
-        updateUI()
+        updateUI();
     }
 }
 function soldat_myra() {
@@ -57,14 +58,27 @@ function soldat_myra() {
         updateUI();
     }
 }
-function auto() {
-    
+function kriga() {
+    document.getElementById("krigTxt").textContent = "Du attackerar!";
+    document.getElementById("krigBox").style.visibility = "hidden";
 }
-function auto() {
-    
+function retirera() {
+    document.getElementById("krigTxt").textContent = "Du retirerar!";
+    document.getElementById("krigBox").style.visibility = "hidden";
 }
-function auto() {
-    
+function checkVal() {
+    await ()
+}
+function checkKrig() {
+    if (autolvl > 0 && Math.floor(Math.random() * fiende) === 0) {
+        fiende = 1000;
+
+        document.getElementById("krigBox").style.visibility = "visible";
+        checkVal()
+    } 
+    else if (autolvl > 0) {
+        fiende -= 5;
+    }
 }
 function auto() {
     
@@ -75,6 +89,7 @@ setInterval(() => {
         myror += drottninglvl;
         mat -= drottninglvl;
     }
+    checkKrig();
     mat += matlvl*myror;
     updateUI();
 }, 1000);
