@@ -9,6 +9,8 @@ let myrapris = 10;
 let soldatpris = 10000;
 let drottninglvl = 0;
 let fiende = 1;
+let updateTick = true;
+let vinnst = false;
 
 function updateUI() {
     document.getElementById("myror").textContent = "Arbetarmyror: "+myror+ " Soldatmyror: "+soldatmyra;
@@ -19,6 +21,7 @@ function updateUI() {
     document.getElementById("autoBtn").textContent = "Barr insamling ("+autopris+" barr) lvl: "+autolvl;
     document.getElementById("soldatBtn").textContent = "Köp soldatmyra ("+soldatpris+" barr)";
 }
+
 function buy_myra() {
     if (barr >= myrapris){
         barr -= myrapris;
@@ -27,6 +30,7 @@ function buy_myra() {
         updateUI();
     }
 }
+
 function auto_samla() {
     if (barr >= autopris){
         barr -= autopris;
@@ -35,6 +39,7 @@ function auto_samla() {
         updateUI();
     }
 }
+
 function auto_mat() {
     if(barr >= 1000+100*matlvl){
         barr -= 1000+100*matlvl;
@@ -42,6 +47,7 @@ function auto_mat() {
         updateUI();
     }
 }
+
 function auto_myra() {
     if(barr >= 5000+5000*drottninglvl){
         barr -= 5000+5000*drottninglvl;
@@ -50,6 +56,7 @@ function auto_myra() {
         updateUI();
     }
 }
+
 function soldat_myra() {
     if (barr >= soldatpris){
         barr -= soldatpris;
@@ -58,40 +65,71 @@ function soldat_myra() {
         updateUI();
     }
 }
+
 function kriga() {
     document.getElementById("krigTxt").textContent = "Du attackerar!";
-    document.getElementById("krigBox").style.visibility = "hidden";
+    document.getElementById("krigBild").style.visibility = "visible"
+    document.getElementById("krigBtn").style.visibility = "hidden";
+    document.getElementById("retireraBtn").style.visibility = "hidden";
+    setTimeout(() => {
+        if(vinnst == true) {
+            document.getElementById("krigBild").style.visibility = "hidden";
+            document.getElementById("krigTxt").textContent = "Du Vann!";
+            barr = barr*2;
+        } else {
+            document.getElementById("krigBild").style.visibility = "hidden";
+            document.getElementById("krigTxt").textContent = "Du Förlorade!";
+            barr = 0;
+            myror = 0;
+            soldatmyra = 0;
+        }
+        setTimeout(() => { 
+            document.getElementById("krigBox").style.visibility = "hidden";
+            updateTick = true;
+            updateUI()
+        }, 2000);
+    }, 2000);
 }
+
 function retirera() {
     document.getElementById("krigTxt").textContent = "Du retirerar!";
-    document.getElementById("krigBox").style.visibility = "hidden";
+    document.getElementById("krigBtn").style.visibility = "hidden";
+    document.getElementById("retireraBtn").style.visibility = "hidden";
+    barr = parseInt(barr/2);
+    setTimeout(() => { 
+        document.getElementById("krigBox").style.visibility = "hidden";
+        updateTick = true;
+        updateUI()
+    }, 2000);
 }
-function checkVal() {
-    await ()
-}
+
 function checkKrig() {
     if (autolvl > 0 && Math.floor(Math.random() * fiende) === 0) {
+        updateTick = false;
         fiende = 1000;
-
+        document.getElementById("krigTxt").textContent = "Du stöter på en fientlig myrstack! Vad vill du göra?";
+        document.getElementById("krigTxt").style.visibility = "visible";
+        document.getElementById("krigBtn").style.visibility = "visible";
+        document.getElementById("retireraBtn").style.visibility = "visible";
+        document.getElementById("krigBild").style.visibility = "hidden";
         document.getElementById("krigBox").style.visibility = "visible";
-        checkVal()
     } 
     else if (autolvl > 0) {
         fiende -= 5;
     }
 }
-function auto() {
-    
-}
+
 setInterval(() => {
-    barr += autolvl*myror;
-    if (mat >= drottninglvl){
-        myror += drottninglvl;
-        mat -= drottninglvl;
+    if(updateTick == true){
+        barr += autolvl*myror;
+        if (mat >= drottninglvl){
+            myror += drottninglvl;
+            mat -= drottninglvl;
+        }
+        checkKrig();
+        mat += matlvl*myror;
+        updateUI();
     }
-    checkKrig();
-    mat += matlvl*myror;
-    updateUI();
 }, 1000);
 
 function clickBarr() {

@@ -16,11 +16,12 @@
     <div class="kontainer">
         <div class="main">
             <img src="./bilder/anthill-section-under-ground-termite-260nw-2171588899.png" onclick="clickBarr()" id="myrstack">
-            <div id="krigBox" style="visibility: hidden;">
-                <img src="./bilder/static.gif" id="krigBild">
-                <p id="krigTxt">Du stöter på en fientlig myrstack! Vad vill du göra?"</p>
-                <button id="krigBtn" onclick="kriga()">Kriga!</button>
-                <button id="retireraBtn" onclick="retirera()">Retirera!</button>
+            
+            <div id="krigBox" style="visibility: hidden">
+                <p id="krigTxt">Du stöter på en fientlig myrstack! Vad vill du göra?</p>
+                <button id="krigBtn" onclick="kriga()">Kriga! (Vinst: Dubbla dina barr. Förlust: Förlora alla dina barr och myror.)</button>
+                <button id="retireraBtn" onclick="retirera()">Retirera! (Förlora häften av dina barr.)</button>
+                <img src="./bilder/static.gif" id="krigBild" style="visibility: hidden">
             </div>
         </div>
         <div class="sidebar">

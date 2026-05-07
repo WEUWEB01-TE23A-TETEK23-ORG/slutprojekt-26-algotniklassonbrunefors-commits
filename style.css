@@ -39,3 +39,10 @@ img{
     border-radius: 10px;
     height: 300px;
 }
+.main{
+    display: flex;
+}
+#krigBox{
+    padding-left: 200px;
+    display: grid;
+}
