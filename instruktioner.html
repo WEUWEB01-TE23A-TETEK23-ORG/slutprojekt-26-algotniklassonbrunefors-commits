@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header">
+        <h1>Ant Clicker</h1>
+        <p id="myror"></p>
+        <p id="resurser"></p>
+        <p id="vinst"></p>
+    </div>
+    <div class="kontainer">
+        <div class="main">
+            <img src="./bilder/anthill-section-under-ground-termite-260nw-2171588899.png" onmouseover="clickBarr()" id="myrstack">
+            <p id="infoTxt"></p>
+        </div>
+        <div class="sidebar">
+            <h2>Upgraderingar</h2>
+            <button id="myraBtn" onmouseover="buy_myra()">Köp myra (10 barr)</button>
+            <button id="autoBtn" onmouseover="auto_samla()">Auto samla (100 barr)</button>
+            <button id="matBtn" onmouseover="auto_mat()">Mat insamling (1000 barr)</button>
+            <button id="drottningBtn" onmouseover="auto_myra()">Köp drottning (5000 barr)</button>
+            <button id="soldatBtn" onmouseover="soldat_myra()">Köp soldatmyra (10000 barr)</button>
+        </div>
+    </div>
+    <div class="footer">
+        <button onclick="location.href='meny.html'">Huvudmeny</button>
+        <button onclick="location.href='spel.html'">Starta spel</button>
+    </div>
+
     <script src="info.js"></script>
 </body>
 </html>

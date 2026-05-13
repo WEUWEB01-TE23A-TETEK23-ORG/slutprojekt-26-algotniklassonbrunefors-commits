@@ -1,4 +1,4 @@
-let barr = 10000000;
+let barr = 0;
 let mat = 0;
 let myror = 1;
 let soldatmyra = 0;
@@ -8,13 +8,15 @@ let autopris = 100;
 let myrapris = 10;
 let soldatpris = 10000;
 let drottninglvl = 0;
-let fiende = 1;
+let fiende = 100;
+let fiendelvl = 1;
 let updateTick = true;
+let vinster = 0;
 
 function updateUI() {
-    document.getElementById("myror").textContent = "Arbetarmyror: "+myror+ " Soldatmyror: "+soldatmyra;
-    document.getElementById("barr").textContent = "Barr: "+barr;
-    document.getElementById("mat").textContent = "Mat: "+mat;
+    document.getElementById("myror").textContent = "Arbetarmyror: "+myror+ "    Soldatmyror: "+soldatmyra;
+    document.getElementById("resurser").textContent = "Barr: "+barr+"   Mat: "+mat;
+    document.getElementById("vinst").textContent = "Vinster: "+vinster;
     document.getElementById("matBtn").textContent = "Mat insamling ("+(1000+100*matlvl)+" barr) lvl: "+matlvl;
     document.getElementById("myraBtn").textContent = "Köp arbetarmyra ("+myrapris+" barr)";
     document.getElementById("autoBtn").textContent = "Barr insamling ("+autopris+" barr) lvl: "+autolvl;
@@ -42,7 +44,7 @@ function auto_samla() {
 function auto_mat() {
     if(barr >= 1000+100*matlvl){
         barr -= 1000+100*matlvl;
-        matlvl +=1;
+        matlvl += 1;
         updateUI();
     }
 }
@@ -72,10 +74,12 @@ function kriga() {
     document.getElementById("krigBtn").style.visibility = "hidden";
     document.getElementById("retireraBtn").style.visibility = "hidden";
     setTimeout(() => {
-        if((Math.random()*100) < soldatmyra) {
+        if((Math.random()*100*fiendelvl) < soldatmyra) {
             document.getElementById("krigBild").style.visibility = "hidden";
             document.getElementById("krigTxt").textContent = "Du Vann!";
             barr = barr*2;
+            vinster += 1;
+            fiendelvl = fiendelvl*1.1
         } else {
             document.getElementById("krigBild").style.visibility = "hidden";
             document.getElementById("krigTxt").textContent = "Du Förlorade!";
@@ -108,16 +112,16 @@ function retirera() {
 function checkKrig() {
     if (soldatmyra > 0 && Math.floor(Math.random() * fiende) === 0) {
         updateTick = false;
-        fiende = 1;
-        document.getElementById("krigTxt").textContent = "Du stöter på en fientlig myrstack! Vad vill du göra?";
+        fiende = 500;
+        document.getElementById("krigTxt").textContent = "Du stöter på en fientlig myrstack! Vad vill du göra? (Chans att vinna: "+Number((soldatmyra/fiendelvl).toFixed(1))+"%)";
         document.getElementById("krigTxt").style.visibility = "visible";
         document.getElementById("krigBtn").style.visibility = "visible";
         document.getElementById("retireraBtn").style.visibility = "visible";
         document.getElementById("krigBild").style.visibility = "hidden";
         document.getElementById("krigBox").style.visibility = "visible";
     } 
-    else if (soldatmyra > 0) {
-        fiende -= 5;
+    else if (soldatmyra > 0 && fiende > 10) {
+        fiende -= 10;
     }
 }
 
