@@ -5,10 +5,13 @@ body{
 }
 .kontainer{
     display: grid;
-    grid-template-columns: 80% 1fr;
+    grid-template-columns: 80% 20%;
     grid-template-areas:
         "main sidebar";
     grid-gap: 20px;
+    width: 1240px;
+    margin: auto;
+    background-color: #603d00;
 }
 .header{
     background-color: #603d00;
@@ -17,7 +20,9 @@ body{
     padding: 20px;
     background-color: #936312;
     border-radius: 20px;
-    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 340px;
 }
 .sidebar{
     display: grid;
@@ -41,11 +46,6 @@ h1{
 img{
     border-radius: 10px;
     height: 300px;
-}
-.main{
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
 }
 #krigBox{
     padding-left: 200px;
