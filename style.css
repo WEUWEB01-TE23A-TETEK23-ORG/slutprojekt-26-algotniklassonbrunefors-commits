@@ -71,7 +71,7 @@ img{
     display: grid;
 }
 
-/* Menysektionen */
+/* Menysektionen på startsidan*/
 .meny{
     padding-top: 50px;
     margin: auto;
@@ -80,7 +80,7 @@ img{
     width: 600px;
 }
 
-/* Knappar i menyn */
+/* Knappar i huvudmenyn */
 .meny button {
     margin: auto;
     font-size: 20px;
