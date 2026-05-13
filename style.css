@@ -1,8 +1,12 @@
+/* Importerar typsnitt från Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
 
+/* Styling för hela sidan */
 body{
     background-color: #603d00;
 }
+
+/* Huvudlayout för sidan */
 .kontainer{
     display: grid;
     grid-template-columns: 80% 20%;
@@ -13,9 +17,13 @@ body{
     margin: auto;
     background-color: #603d00;
 }
+
+/* Header-sektion */
 .header{
     background-color: #603d00;
 }
+
+/* Layout för huvudinnehåll (myrstack + krigbox) */
 .main{
     padding: 20px;
     background-color: #936312;
@@ -24,6 +32,8 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     height: 340px;
 }
+
+/* Sidebar med information och knappar */
 .sidebar{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -31,26 +41,37 @@ body{
     border: #000000 3px solid;
     margin-bottom: 40px;
 }
+
+/* Styling för rubriker i sidebaren */
 .sidebar h2{
     margin: auto;
 }
-p{}
+
+/* Styling för knappar */
 button{
     padding: 10px;
     background-color: #a47c37;
 }
+
+/* Styling för huvudrubrik */
 h1{
     text-align: center;
     font-size: 40px;
 }
+
+/* Styling för bilder */
 img{
     border-radius: 10px;
     height: 300px;
 }
+
+/* Popuprutan när krig startas */
 #krigBox{
     padding-left: 200px;
     display: grid;
 }
+
+/* Menysektionen */
 .meny{
     padding-top: 50px;
     margin: auto;
@@ -58,19 +79,27 @@ img{
     grid-template-rows: 1fr 0.3fr 0.3fr;
     width: 600px;
 }
+
+/* Knappar i menyn */
 .meny button {
     margin: auto;
     font-size: 20px;
     width: 300px;
 }
+
+/* Gemensamt typsnitt för text och knappar */
 h1, h2, p, button{
     font-family: "Comic Relief", system-ui;
     font-weight: 400;
     font-style: normal;
 }
+
+/* Myrstack-bilden */
 #myrstack{
     margin-top: 20px;
 }
+
+/* Styling för informationsruta på instruktionssidan*/
 #infoTxt{
     padding: 20px;
     background-color: wheat;
