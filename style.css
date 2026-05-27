@@ -6,6 +6,11 @@ body{
     background-color: #603d00;
 }
 
+/* Header-sektion */
+header{
+    background-color: #603d00;
+}
+
 /* Huvudlayout för sidan */
 .kontainer{
     display: grid;
@@ -18,13 +23,8 @@ body{
     background-color: #603d00;
 }
 
-/* Header-sektion */
-.header{
-    background-color: #603d00;
-}
-
 /* Layout för huvudinnehåll (myrstack + krigbox) */
-.main{
+main{
     padding: 20px;
     background-color: #936312;
     border-radius: 20px;
